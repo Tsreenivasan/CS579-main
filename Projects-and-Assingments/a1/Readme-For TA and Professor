@@ -1,0 +1,16 @@
+The Score_Max_Depth function has  discrepancies  with the professor's output, though the discrepancies are in the fifth decimal, I have not been able to pin point on where the issue lies.
+
+Though the functions scored the example_graph accurately, the function failed to match the professor's output to the decimal point.
+
+Assuming the Issue exists in either of
+>Cut calculation
+>Volume Calculation
+>Bottom up recursion
+>BFS traversals
+
+i tested on tweaking the example graph by adding new nodes and chopping of a few edges, however, i still dont seem to find the error.
+
+
+Would it be possible to provide more ways of debugging to test against the training data? like sample outputs for different inputs of the training graph apart from the output in the Log.txt in A1.
+
+This would have helped me debug the issue effeciently and rely less help from the Issue portal

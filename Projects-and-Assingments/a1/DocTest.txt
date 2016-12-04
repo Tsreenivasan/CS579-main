@@ -1,0 +1,196 @@
+[('C', 'B'), ('C', 'A'), ('E', 'F'), ('E', 'D'), ('D', 'F'), ('D', 'B'), ('D', 'G'), ('F', 'G'), ('B', 'A')]
+[('B', 'C'), ('A', 'C'), ('E', 'F'), ('D', 'E'), ('D', 'F'), ('B', 'D'), ('D', 'G'), ('F', 'G'), ('A', 'B')]
+Trying:
+    sorted(approximate_betweenness(example_graph(), 2).items())
+Expecting:
+    [(('A', 'B'), 2.0), (('A', 'C'), 1.0), (('B', 'C'), 2.0), (('B', 'D'), 6.0), (('D', 'E'), 2.5), (('D', 'F'), 2.0), (('D', 'G'), 2.5), (('E', 'F'), 1.5), (('F', 'G'), 1.5)]
+ok
+Trying:
+    node2distances, node2num_paths, node2parents = bfs(example_graph(), 'E', 5)
+Expecting nothing
+ok
+Trying:
+    sorted(node2distances.items())
+Expecting:
+    [('A', 3), ('B', 2), ('C', 3), ('D', 1), ('E', 0), ('F', 1), ('G', 2)]
+ok
+Trying:
+    sorted(node2num_paths.items())
+Expecting:
+    [('A', 1), ('B', 1), ('C', 1), ('D', 1), ('E', 1), ('F', 1), ('G', 2)]
+ok
+Trying:
+    sorted((node, sorted(parents)) for node, parents in node2parents.items())
+Expecting:
+    [('A', ['B']), ('B', ['D']), ('C', ['B']), ('D', ['E']), ('F', ['E']), ('G', ['D', 'F'])]
+ok
+Trying:
+    node2distances, node2num_paths, node2parents = bfs(example_graph(), 'E', 2)
+Expecting nothing
+ok
+Trying:
+    sorted(node2distances.items())
+Expecting:
+    [('B', 2), ('D', 1), ('E', 0), ('F', 1), ('G', 2)]
+ok
+Trying:
+    sorted(node2num_paths.items())
+Expecting:
+    [('B', 1), ('D', 1), ('E', 1), ('F', 1), ('G', 2)]
+ok
+Trying:
+    sorted((node, sorted(parents)) for node, parents in node2parents.items())
+Expecting:
+    [('B', ['D']), ('D', ['E']), ('F', ['E']), ('G', ['D', 'F'])]
+ok
+Trying:
+    node2distances, node2num_paths, node2parents = bfs(example_graph(), 'E', 5)
+Expecting nothing
+ok
+Trying:
+    result = bottom_up('E', node2distances, node2num_paths, node2parents)
+Expecting nothing
+ok
+Trying:
+    sorted(result.items())
+Expecting:
+    [(('A', 'B'), 1.0), (('B', 'C'), 1.0), (('B', 'D'), 3.0), (('D', 'E'), 4.5), (('D', 'G'), 0.5), (('E', 'F'), 1.5), (('F', 'G'), 0.5)]
+ok
+Trying:
+    v = complexity_of_bfs(13, 23, 7)
+Expecting nothing
+ok
+Trying:
+    type(v) == int or type(v) == float
+Expecting:
+    True
+ok
+Trying:
+    cut(['A', 'B', 'C'], ['D', 'E', 'F', 'G'], example_graph())
+Expecting:
+    1
+ok
+Trying:
+    evaluate([('D', 'E'), ('D', 'A')], example_graph())
+Expecting:
+    0.5
+ok
+Trying:
+    subgraph = get_subgraph(example_graph(), 3)
+Expecting nothing
+ok
+Trying:
+    sorted(subgraph.nodes())
+Expecting:
+    ['B', 'D', 'F']
+ok
+Trying:
+    len(subgraph.edges())
+Expecting:
+    2
+ok
+Trying:
+    s = is_approximation_always_right()
+Expecting nothing
+ok
+Trying:
+    type(s)
+Expecting:
+    <class 'str'>
+ok
+Trying:
+    g = example_graph()
+Expecting nothing
+ok
+Trying:
+    train_graph = make_training_graph(g, 'D', 2)
+Expecting nothing
+ok
+Trying:
+    jaccard(train_graph, 'D', 2)
+Expecting:
+    [(('D', 'E'), 0.5), (('D', 'A'), 0.0)]
+ok
+Trying:
+    g = example_graph()
+Expecting nothing
+ok
+Trying:
+    sorted(g.neighbors('D'))
+Expecting:
+    ['B', 'E', 'F', 'G']
+ok
+Trying:
+    train_graph = make_training_graph(g, 'D', 2)
+Expecting nothing
+ok
+Trying:
+    sorted(train_graph.neighbors('D'))
+Expecting:
+    ['F', 'G']
+ok
+Trying:
+    components = partition_girvan_newman(example_graph(), 5)
+Expecting nothing
+ok
+Trying:
+    components = sorted(components, key=lambda x: sorted(x.nodes())[0])
+Expecting nothing
+ok
+Trying:
+    sorted(components[0].nodes())
+Expecting:
+    ['A', 'B', 'C']
+ok
+Trying:
+    sorted(components[1].nodes())
+Expecting:
+    ['D', 'E', 'F', 'G']
+ok
+Trying:
+    g = example_graph()
+Expecting nothing
+ok
+Trying:
+    train_graph = g.copy()
+Expecting nothing
+ok
+Trying:
+    train_graph.remove_edge(*('D', 'F'))
+Expecting nothing
+ok
+Trying:
+    path_score(train_graph, 'D', k=4, beta=.5)
+Expecting:
+    [(('D', 'F'), 0.5), (('D', 'A'), 0.25), (('D', 'C'), 0.25)]
+ok
+Trying:
+    volume(['A', 'B', 'C'], example_graph())
+Expecting:
+    4
+ok
+7 items had no tests:
+    Assignment-A1
+    Assignment-A1.download_data
+    Assignment-A1.example_graph
+    Assignment-A1.main
+    Assignment-A1.norm_cut
+    Assignment-A1.read_graph
+    Assignment-A1.score_max_depths
+13 items passed all tests:
+   1 tests in Assignment-A1.approximate_betweenness
+   8 tests in Assignment-A1.bfs
+   3 tests in Assignment-A1.bottom_up
+   2 tests in Assignment-A1.complexity_of_bfs
+   1 tests in Assignment-A1.cut
+   1 tests in Assignment-A1.evaluate
+   3 tests in Assignment-A1.get_subgraph
+   2 tests in Assignment-A1.is_approximation_always_right
+   3 tests in Assignment-A1.jaccard
+   4 tests in Assignment-A1.make_training_graph
+   4 tests in Assignment-A1.partition_girvan_newman
+   4 tests in Assignment-A1.path_score
+   1 tests in Assignment-A1.volume
+37 tests in 20 items.
+37 passed and 0 failed.
+Test passed.

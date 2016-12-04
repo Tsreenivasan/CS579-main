@@ -1,0 +1,9 @@
+Number of messages collected: 20
+Number of users collected: 15
+Average number of users per community:: 46.2
+Tweets classified as Positive:: 17
+One tweet from the Positive class is below::
+ ('THANK YOU!!!!! https://t.co/8mkXYXTEg6', 'Positive', 0.96071924290182475, [('Negative', 0.039280757098175245), ('Positive', 0.96071924290182475)])
+Tweets classified as Negative:: 3
+One tweet from the Negative class is below::
+ ('@GoodAdviceGraf Vikings trash dog.. lost 6 of last 7 games now', 'Negative', 0.82034787651595464, [('Negative', 0.82034787651595464), ('Positive', 0.17965212348404536)])

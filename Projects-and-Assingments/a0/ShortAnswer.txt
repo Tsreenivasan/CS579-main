@@ -1,0 +1,63 @@
+
+Enter your responses inline below and push this file to your private GitHub
+repository.
+
+
+1. Assume I plan to use the friend_overlap function above to quantify the
+similarity of two users. E.g., because 344 is larger than 1, I conclude that
+Jill Stein and Gary Johnson are more similar than Hillary Clinton and Donald
+Trump.
+
+How is this approach misleading? How might you fix it?
+
+Our approach in finding similarities by just comparing the list of communites/users each candidate follow will lead to misleading results
+
+One look at the regular list of users, and the list of people they follow, it just makes it easier to find similarities and communites in the social network. But this is only at a high level.
+In our candidate list, it's understood that Trump is not interested to get the in-the-moment updates on the topics which may interest him since he just follows only 42 twitter users, most of which are his line of hotels and business.
+
+One way of fixing it is, Our analysis among the candidates should not only include the list of people they follow, it should also include classification on what the candidates regularly tweet about, how interactive is the candidate with respect to his interest.
+
+If Donald and Hillary address Charity over 120 times in a month, though both dont follow any charity channels, they are more similar in this perspective compared to Jill and Gary who may have not spoke about Charity regulary over the past few months, though they actively follow charity channels.
+ 
+ 
+Our approach should extract areas of interests from all sources possible.
+
+
+2. Looking at the output of your followed_by_hillary_and_donald function, why
+do you think this user is followed by both Hilary Clinton and Donald Trump,
+who are rivals? Do some web searches to see if you can find out more
+information.
+
+	Mr Earvin "Magic" Johnson is followed by both Hillary and Trump. He's a famous Retired American basketball player, who played for Los Angeles lakers for 13 seasons. The two-time inductee into the Baskterball hall of fame has had vast success during his rofessional career
+
+
+
+3. There is a big difference in how many accounts each candidate follows (Gary
+Johnson follows over 3K accounts, while Donald Trump follows less than
+50). Why do you think this is? How might that affect our analysis?
+
+	Donald Trump seemingly uses Twitter mainly for following updates and news of his chain of business and to push his updates/opinions on people who find his messages interesting.
+We can assume that, Trump not following many accounts on twitter, that he is not interested to get the in-the-moment updates on the things that may interest him.
+Our analysis will be hindered if we are performing any similarity study among the other candidates. But majority of our study will focus on how well his tweets are accepted and how they compare against the rest.
+
+
+4. The follower graph we've collected is incomplete. To expand it, we would
+have to also collect the list of accounts followed by each of the
+friends. That is, for each user X that Donald Trump follows, we would have to
+also collect all the users that X follows. Assuming we again use the API call
+https://dev.twitter.com/rest/reference/get/friends/ids, how many requests will
+we have to make? Given how Twitter does rate limiting
+(https://dev.twitter.com/rest/public/rate-limiting), approximately how many
+minutes will it take to collect this data?
+
+For this we need 43 requests,
+
+1 request to get the 42 number of people Trump follows
+and 42 individual requests to let the list of people they follow.
+
+However this is not possible with just one run-time.
+
+Using a Request_result-save_Re-request mechanism, it is possible to perform this operation by re-requesting in the rate-limit intervals of 15 minutes.
+
+This would take ceil((43/15)-1)*15 minutes ::30 minutes to tabulate the results for Donald Trump
+
